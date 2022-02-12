@@ -12,8 +12,8 @@
 
 	Examples:
 
-`./do count nucleotide "<path/to/file>"`
-`./do translate dna-to-rna '<path/to/file>' to_file=True`
+	`./do count nucleotide "<path/to/file>"`
+	`./do translate dna-to-rna '<path/to/file>' to_file=True`
 
 
 
@@ -28,16 +28,16 @@
    ├── translate.py
 ```
 
-Contains:
+### Contains:
 
-DNA to RNA sequence translator
-RNA to DNA sequence translator
-Pattern matcher
-Pattern counter
-Nucleotide counter
-Frequency counter
+	DNA to RNA sequence translator
+	RNA to DNA sequence translator
+	Pattern matcher
+	Pattern counter
+	Nucleotide counter
+	Frequency counter
 
-Sample file added.
+	Sample file added.
 
 Built on top of DynaCLI by BST Labs. [Check it out!](https://github.com/BstLabs/py-dynacli)
 
