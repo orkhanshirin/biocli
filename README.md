@@ -13,7 +13,7 @@
 	Examples:
 
 	`./do count nucleotide "<path/to/file>"`
-	`./do translate dna-to-rna '<path/to/file>' to_file=True`
+	`./do translate dna-to-rna "<path/to/file>" to_file=True`
 
 
 
