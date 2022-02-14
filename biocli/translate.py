@@ -2,13 +2,12 @@
 
 
 """
-
 Translate feature to translate the given DNA sequence to RNA and vice versa.
 """
 
 
-from src.helper import _new_name, Sequence
-from src.errors import WrongNucleotideError, EmptyFileError
+from biocli._helper import _new_name, Sequence
+from biocli._errors import WrongNucleotideError, EmptyFileError
 
 
 __version__ = ' 1.0'
@@ -17,19 +16,22 @@ __all__ = ['dna_to_rna', 'rna_to_dna']
 
 def dna_to_rna(text_file: str, to_file: bool = False) -> str:
     """
-
     Translates the DNA sequence to RNA.
 
-    :param text_file: The full file path to the sequence file. (str)
+    Args:
+        text_file (str): The full file path to the sequence file.
+        to_file (bool): Save to file option. Default is False.
     
-    :param to_file: Defaults to False. If True, the result is saved as a .txt file within the same directory.
-    
-    :print RNA sequence.
+    Print: RNA sequence
     """
 
     seq = Sequence(text_file)
-    for alt in (('T', 'U'), ('\n', ''), ('DNA', 'RNA')):
-        rna_text = str(seq).replace(*alt)
+    rna_text = ''.join(['U' if x == 'T' else x for x in seq])
+
+    if rna_text.startswith('DNA -- '):
+        rna_text = f'RNA -- {rna_text[7:]}'
+    else:
+        rna_text = f'RNA -- {rna_text}'
 
     if len(seq) == 0:
         raise EmptyFileError
@@ -45,18 +47,22 @@ def dna_to_rna(text_file: str, to_file: bool = False) -> str:
 def rna_to_dna(text_file: str, to_file: bool = False) -> str:
     """
 
-    Translates the RNA sequence to DNA.
+    Translates the DNA sequence to RNA.
 
-    :param text_file: The full file path to the sequence file. (str)
-
-    :param to_file: Defaults to False. If True, the result is saved as a .txt file within the same directory.
-
-    :print DNA sequence.
+    Args:
+        text_file (str): The full file path to the sequence file.
+        to_file (bool): Save to file option. Default is False.
+    
+    Print: DNA sequence
     """
 
     seq = Sequence(text_file)
-    for alt in (('U', 'T'), ('\n', ''), ('RNA', 'DNA')):
-        dna_text = str(seq).replace(*alt)
+    dna_text = ''.join(['T' if x == 'U' else x for x in seq])
+
+    if dna_text.startswith('RNA -- '):
+        dna_text = f'DNA -- {dna_text[7:]}'
+    else:
+        dna_text = f'DNA -- {dna_text}'
 
     if len(seq) == 0:
         raise EmptyFileError

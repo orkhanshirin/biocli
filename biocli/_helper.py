@@ -5,10 +5,10 @@
 Helper functions and Sequence class defined here.
 """
 
-from errors import WrongFormatError
+from biocli._errors import WrongFormatError
 
 
-_default_sample_ = 'src/sample.txt'
+_default_sample_ = '../sample.txt'
 
 
 def _new_name(seq_type: str) -> str:
@@ -36,12 +36,10 @@ def _load_sequence(text_file: str) -> str:
     Loads the sequence from the file.
     """
 
-    try:
-        with open(text_file, 'r') as file:
-            symbol_list = [x for x in file.read()]
-        return ''.join(symbol_list)
-    except not text_file.endswith('.txt'):
-        raise WrongFormatError
+    with open(text_file, 'r') as file:
+        symbol_list = [x for x in file.read()]
+    
+    return ''.join(symbol_list)
 
 
 class Sequence:

@@ -2,13 +2,13 @@
 
 
 """
-
 Count feature to count the nucleotides and patterns in the given DNA or RNA sequence.
 """
 
 
 from collections import Counter
-from src.helper import Sequence, _default_sample_
+from biocli._helper import Sequence, _default_sample_
+from biocli._errors import EmptyFileError
 
 
 __version__ = ' 1.0'
@@ -17,15 +17,18 @@ __all__ = ['nucleotide', 'pattern', 'frequency']
 
 def nucleotide(text_file: str=_default_sample_) -> Counter:
     """
+    Counts all the nucleotides in the sequence separately.
 
-    Counts the nucleotides in the sequence.
+    Args:
+        text_file (str): The full file path to the sequence file.
 
-    :param  text_file: The full file path to the sequence file. (str)
-
-    :print  Nucleotides and their counts.
+    Print:  Nucleotides and their counts.
     """
-
-    counts = Counter([x for x in Sequence(text_file)])
+    seq = Sequence(text_file)
+    if len(seq) == 0:
+        raise EmptyFileError
+    else:
+        counts = Counter([x for x in seq])
 
     for sym, count in sorted(counts.items()):
         if sym == '\n':
@@ -37,13 +40,13 @@ def nucleotide(text_file: str=_default_sample_) -> Counter:
 def pattern(pattern: str, text_file: str=_default_sample_) -> int:
     """
 
-    Counts the number of times the pattern appears in the text.
+    Counts the number of occurance of the pattern in given text file.
     
-    :param  pattern: The pattern to search for.
-
-    :param  text_file: The full file path to load the sequence from.
+    Args:
+        pattern (str): The pattern to search for.
+        text_file (str): The full file path to the sequence file.
     
-    :print  The number of times the pattern appears in the text.
+    Print: Count of pattern.
     """
 
     seq = Sequence(text_file)
@@ -55,17 +58,20 @@ def pattern(pattern: str, text_file: str=_default_sample_) -> int:
 def frequency(window_len: int, text_file: str=_default_sample_) -> dict:
     """
     
-    Counts all the possible nucleotide sequences of given length in the sequence.
+    Counts all the possible nucleotide combinations of given length in the sequence.
 
-    :param text_file: The full file path to load the sequence from.
+    Args:
+        text_file (str): The full file path to the sequence file
+        window_len (int): The length of the nucleotide combination.
 
-    :param window_len: The length of the nucleotide sequence to count.
-
-    :print Count of count of every possible nucleotide sequence of given length.
+    Print: Nucleotide combinations and their counts.
     """
 
     seq = Sequence(text_file)
-    frequency = {}
+    if len(seq) == 0:
+        raise EmptyFileError
+    else:
+        frequency = {}
 
     for i in range(len(seq) - window_len + 1):
         pattern = seq[i:i + window_len]
