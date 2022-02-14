@@ -6,27 +6,26 @@
     Works with python version >= 3.9
     For Linux users only
     Works with `.txt` files only.
-    Make the "do" file executable using linux terminal typing `chmod +x do` command
+    Make the "compute" file executable using linux terminal typing `chmod +x compute` command
 
 ## How to use
 
 	Examples:
 
-	`./do count nucleotide "<path/to/file>"`
-	`./do translate dna-to-rna "<path/to/file>" to_file=True`
+	`./compute biocli count nucleotide "<path/to/file>"`
+	`./compute biocli translate dna-to-rna "<path/to/file>" to_file=True`
 
 
 
 ## Project layout
 ``` bst_assignments
-   ├── src
-   │   ├── errors.py
-   │   ├── helper.py 
-   │   ├── dynacli.py 
-   ├── do 
-   ├── count.py
-   ├── pattern.py
-   ├── translate.py
+   ├── biocli
+   │   ├── count.py
+   │   ├── pattern.py 
+   │   ├── translate.py 
+   ├── compute 
+   ├── _helper.py
+   ├── _errors.py
 ```
 
 ### Contains:
