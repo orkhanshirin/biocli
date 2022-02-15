@@ -27,8 +27,8 @@ positional arguments:
 
 optional arguments:
     -h, --help                 show this help message and exit
-
-
+```
+```
 `$ ./compute biocli translate dna-to-rna "sample.txt" to_file=False`
 UGCUCCGCCGAACCAUUCAUGCGGGAUACGACUUGGAUGACAUAGGAAAUUCAUAAUUAUCGUGUCUAAGUAAUUGCAUGCAGGCUGCAA
 UAACGUUGUUGGCCGAGCGUAAUACAAGAUUAGCCGCUGUUGAUGCUCAUUAGACGCGUUGGUAAAUUUGACGUUCUUAUGACCCCUACG
