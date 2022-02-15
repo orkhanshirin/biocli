@@ -2,7 +2,6 @@
 
 
 """
-
 Common errors defined here:
 """
 
@@ -11,7 +10,7 @@ class WrongFormatError(BaseException):
     """Raised when the input file is not in the correct format"""
 
     def __init__(self, *args, **kwargs):
-        default_message = 'The file you passed is not supported!'
+        default_message = 'The file you passed is not supported! Only .txt files are accepted.'
 
         # If any arguments are passed...
         if args:
@@ -20,6 +19,7 @@ class WrongFormatError(BaseException):
         else:
                     # ... pass the default message to the super constructor
             super().__init__(default_message, **kwargs)
+
 
 class EmptyFileError(BaseException):
     """Raised when the input file is empty"""

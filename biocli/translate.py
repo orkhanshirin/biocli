@@ -6,8 +6,9 @@ Translate feature to translate the given DNA sequence to RNA and vice versa.
 """
 
 
-from biocli._helper import _new_name, Sequence
-from biocli._errors import WrongNucleotideError, EmptyFileError
+from . _sequence import Sequence
+from . _errors import WrongNucleotideError
+from . _helper import save
 
 
 __version__ = ' 1.0'
@@ -22,54 +23,47 @@ def dna_to_rna(text_file: str, to_file: bool = False) -> str:
         text_file (str): The full file path to the sequence file.
         to_file (bool): Save to file option. Default is False.
     
-    Print: RNA sequence
+    Return: RNA sequence
     """
 
     seq = Sequence(text_file)
+
+    # check if the sequence is DNA
+    if seq._is_rna():
+        raise WrongNucleotideError
+
     rna_text = ''.join(['U' if x == 'T' else x for x in seq])
 
-    if rna_text.startswith('DNA -- '):
-        rna_text = f'RNA -- {rna_text[7:]}'
+    if to_file:
+        save('RNA', rna_text)
     else:
-        rna_text = f'RNA -- {rna_text}'
-
-    if len(seq) == 0:
-        raise EmptyFileError
-    elif seq.is_rna():
-        raise WrongNucleotideError
-    elif to_file:
-        with open(_new_name('rna'), 'w+') as file:
-            file.write(rna_text)
-
-    print(rna_text)
+        print(rna_text)
+    
+    return rna_text
 
 
 def rna_to_dna(text_file: str, to_file: bool = False) -> str:
     """
-
     Translates the DNA sequence to RNA.
 
     Args:
         text_file (str): The full file path to the sequence file.
         to_file (bool): Save to file option. Default is False.
     
-    Print: DNA sequence
+    Return: DNA sequence
     """
 
     seq = Sequence(text_file)
+
+    # check if the sequence is RNA
+    if seq._is_dna():
+        raise WrongNucleotideError
+
     dna_text = ''.join(['T' if x == 'U' else x for x in seq])
 
-    if dna_text.startswith('RNA -- '):
-        dna_text = f'DNA -- {dna_text[7:]}'
+    if to_file:
+        save('DNA', dna_text)
     else:
-        dna_text = f'DNA -- {dna_text}'
-
-    if len(seq) == 0:
-        raise EmptyFileError
-    elif seq.is_dna():
-        raise WrongNucleotideError
-    elif to_file:
-        with open(_new_name('dna'), 'w+') as file:
-            file.write(dna_text)
-
-    print(dna_text)
+        print(dna_text)
+    
+    return dna_text

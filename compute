@@ -18,9 +18,13 @@ print(cwd)
 # This is a simplest possible configuration. Look at [TBD]() for complete list
 # of configuration options and typical use cases for each one.
 search_path = [cwd]
-# This needs to be done only if your sys.path does not already include it
-# Here, we also include the src/python to enable dynacli import
-from dynacli import main
+# This needs to be done only if your sys.path does not already include it.
+
+try:
+    from dynacli import main
+except ImportError:
+    print("DynaCLI is not installed. Please install it first. (pip3 install dynacli)")
+    sys.exit(1)
 
 sys.path.extend(search_path)
 
