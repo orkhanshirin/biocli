@@ -5,9 +5,8 @@
 BioCLI for Computational Biology
 """
 
-import sys
 import os
-
+import sys
 
 __version__ = "1.0"
 

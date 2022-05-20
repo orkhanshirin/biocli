@@ -4,23 +4,24 @@
 """
 Sequence class defined here.
 """
+from typing import Any, Union
 
-from . _errors import WrongFormatError, EmptyFileError
-
+from ._errors import EmptyFileError, WrongFormatError
 
 # if text file not provided we use the default value
-DEFAULT_SAMPLE = '../sample.txt'
+DEFAULT_SAMPLE = "../samples/sample.txt"
 
 
 # loads the text file and returns the sequence as a string
-def _load_sequence(text_file: str=DEFAULT_SAMPLE) -> str:
+def _load_sequence(text_file: str = DEFAULT_SAMPLE) -> Union[str, Any]:
     try:
-        with open(text_file, 'r') as file:
-            symbol_list = [x for x in file.read()]
-    except not text_file.endswith('.txt'):
-        raise WrongFormatError
-    
-    return ''.join(symbol_list).replace('\n', '')
+        with open(text_file, "r", encoding="utf-8") as file:
+            symbol_list = [file.read()]
+            return "".join(symbol_list).replace("\n", "")
+    except WrongFormatError as err:
+        if not text_file.endswith(".txt"):
+            raise err
+        return "Failed!"
 
 
 class Sequence:
@@ -49,17 +50,17 @@ class Sequence:
     def __iter__(self):
         return iter(self.__seq)
 
-    def __getitem__(self, slice: int):
-        return self.__seq[slice]
+    def __getitem__(self, slice_: Union[int, slice]):
+        return self.__seq[slice_]
 
     def __str__(self) -> str:
         return self.__seq
 
     def _is_dna(self) -> bool:
-        return not 'U' in self.__seq
+        return "U" not in self.__seq
 
     def _is_rna(self) -> bool:
-        return not 'T' in self.__seq
+        return "T" not in self.__seq
 
     def _is_empty(self) -> bool:
         return len(self.__seq) == 0

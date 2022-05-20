@@ -7,11 +7,12 @@ Count feature to count the nucleotides and patterns in the given DNA or RNA sequ
 
 
 from collections import Counter
-from . _sequence import Sequence
+from typing import Dict
 
+from ._sequence import Sequence
 
-__version__ = ' 1.0'
-__all__ = ['nucleotide', 'pattern', 'frequency']
+__version__ = " 1.0"
+__all__ = ["nucleotide", "pattern", "frequency"]
 
 
 def nucleotide(text_file: str) -> Counter:
@@ -26,32 +27,33 @@ def nucleotide(text_file: str) -> Counter:
 
     seq = Sequence(text_file)
 
-    counts = Counter([x for x in seq])
+    counts = Counter([seq])
 
     for symbol, count in sorted(counts.items()):
-            print(f'{symbol} -- {count}')
+        print(f"{symbol} -- {count}")
 
     return counts
 
-def pattern(pattern: str, text_file: str) -> int:
+
+def pattern(pattern_: str, text_file: str) -> str:
     """
     Counts the number of occurance of the pattern in given text file.
-    
+
     Args:
         pattern (str): The pattern to search for.
         text_file (str): The full file path to the sequence file.
-    
+
     Return: Count of pattern.
     """
 
     seq = Sequence(text_file)
-    
-    return f'{str(seq).count(pattern)} patterns found.'
+
+    return f"{str(seq).count(pattern_)} patterns found."
 
 
-def frequency(window_len: int, text_file: str) -> dict:
+def frequency(window_len: int, text_file: str) -> Dict:
     """
-    
+
     Counts all the possible nucleotide combinations of given length in the sequence.
 
     Args:
@@ -62,18 +64,18 @@ def frequency(window_len: int, text_file: str) -> dict:
     """
 
     seq = Sequence(text_file)
-    
-    frequency = {}
+
+    frequency_ = {}
 
     for i in range(len(seq) - window_len + 1):
-        pattern = seq[i:i + window_len]
-        frequency[pattern] = 0
+        pattern_ = seq[i : i + window_len]
+        frequency_[pattern_] = 0
 
         for j in range(len(seq) - window_len + 1):
-            if seq[j:j + window_len] == pattern:
-                frequency[pattern] +=  1
+            if seq[j : (j + window_len)] == pattern_:
+                frequency_[pattern_] += 1
 
-    for freq, value in frequency.items():
-        print(f'{freq} -- {value}')
+    for freq, value in frequency_.items():
+        print(f"{freq} -- {value}")
 
-    return frequency
+    return frequency_

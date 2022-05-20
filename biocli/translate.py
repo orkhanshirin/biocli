@@ -6,13 +6,12 @@ Translate feature to translate the given DNA sequence to RNA and vice versa.
 """
 
 
-from . _sequence import Sequence
-from . _errors import WrongNucleotideError
-from . _helper import save
+from ._errors import WrongNucleotideError
+from ._helper import save
+from ._sequence import Sequence
 
-
-__version__ = ' 1.0'
-__all__ = ['dna_to_rna', 'rna_to_dna']
+__version__ = " 1.0"
+__all__ = ["dna_to_rna", "rna_to_dna"]
 
 
 def dna_to_rna(text_file: str, to_file: bool = False) -> str:
@@ -22,7 +21,7 @@ def dna_to_rna(text_file: str, to_file: bool = False) -> str:
     Args:
         text_file (str): The full file path to the sequence file.
         to_file (bool): Save to file option. Default is False.
-    
+
     Return: RNA sequence
     """
 
@@ -32,13 +31,13 @@ def dna_to_rna(text_file: str, to_file: bool = False) -> str:
     if seq._is_rna():
         raise WrongNucleotideError
 
-    rna_text = ''.join(['U' if x == 'T' else x for x in seq])
+    rna_text = "".join(["U" if x == "T" else x for x in seq])
 
     if to_file:
-        save('RNA', rna_text)
+        save("RNA", rna_text)
     else:
         print(rna_text)
-    
+
     return rna_text
 
 
@@ -49,7 +48,7 @@ def rna_to_dna(text_file: str, to_file: bool = False) -> str:
     Args:
         text_file (str): The full file path to the sequence file.
         to_file (bool): Save to file option. Default is False.
-    
+
     Return: DNA sequence
     """
 
@@ -59,11 +58,11 @@ def rna_to_dna(text_file: str, to_file: bool = False) -> str:
     if seq._is_dna():
         raise WrongNucleotideError
 
-    dna_text = ''.join(['T' if x == 'U' else x for x in seq])
+    dna_text = "".join(["T" if x == "U" else x for x in seq])
 
     if to_file:
-        save('DNA', dna_text)
+        save("DNA", dna_text)
     else:
         print(dna_text)
-    
+
     return dna_text

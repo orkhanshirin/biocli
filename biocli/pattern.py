@@ -6,11 +6,10 @@ Pattern feature for finding given pattern in the given DNA or RNA sequence.
 """
 
 
-from . _sequence import Sequence
+from ._sequence import Sequence
 
-
-__version__ = ' 1.0'
-__all__ = ['match']
+__version__ = " 1.0"
+__all__ = ["match"]
 
 
 def match(pattern: str, text_file: str) -> list:
@@ -23,13 +22,13 @@ def match(pattern: str, text_file: str) -> list:
 
     Return: Position indices of the pattern in the sequence.
     """
-    
+
     seq = Sequence(text_file)
 
     positions = []
 
-    for i in range(len(seq) - len(pattern)+1):
-        if seq[i:i + (len(pattern))] == pattern.upper():
+    for i in range(len(seq) - len(pattern) + 1):
+        if seq[i : i + (len(pattern))] == pattern.upper():
             positions.append(i)
 
     print(positions)
