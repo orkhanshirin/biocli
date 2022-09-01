@@ -11,8 +11,8 @@
 
 ## How to use
 
-	Examples:
-```
+Examples:
+```console
 $ ./compute biocli -h
 usage: compute biocli [-h] {count,pattern,translate}
     
@@ -28,7 +28,7 @@ positional arguments:
 optional arguments:
     -h, --help                 show this help message and exit
 ```
-```
+```console
 $ ./compute biocli translate dna-to-rna "sample.txt" to_file=False
 UGCUCCGCCGAACCAUUCAUGCGGGAUACGACUUGGAUGACAUAGGAAAUUCAUAAUUAUCGUGUCUAAGUAAUUGCAUGCAGGCUGCAA
 UAACGUUGUUGGCCGAGCGUAAUACAAGAUUAGCCGCUGUUGAUGCUCAUUAGACGCGUUGGUAAAUUUGACGUUCUUAUGACCCCUACG
@@ -45,7 +45,7 @@ ACAGUGUUAUCCUUCACUUGAACGACAAGAUAAUGAACAUUGUGGACUUGCGUAUA
 
 
 ## Project layout
-``` 
+```console
 ├── biocli
    ├── biocli
    │   ├── count.py
