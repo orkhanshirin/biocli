@@ -46,7 +46,7 @@ ACAGUGUUAUCCUUCACUUGAACGACAAGAUAAUGAACAUUGUGGACUUGCGUAUA
 
 ## Project layout
 ``` 
-├── bst_assignment
+├── biocli
    ├── biocli
    │   ├── count.py
    │   ├── pattern.py 
