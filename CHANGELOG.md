@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [v1.0.1b1](https://github.com/orkhanshirin/biocli/releases/tag/v1.0.1b1) - 2022-09-21 16:31:15
+
+## What's Changed
+* Test PR Iteration 1 by @orkhanshirin in https://github.com/orkhanshirin/biocli/pull/2
+* refactor(develop): Modified changelog workflow by @orkhanshirin in https://github.com/orkhanshirin/biocli/pull/3
+
+
+**Full Changelog**: https://github.com/orkhanshirin/biocli/compare/v1.0.1a...v1.0.1b1
+
+### Refactor
+
+- develop:
+  - Modified changelog workflow ([6f2f7d5](https://github.com/orkhanshirin/biocli/commit/6f2f7d580c4dcfcebf50af1af2737f7069f61a65)) ([#3](https://github.com/orkhanshirin/biocli/pull/3))
+
 ## [v1.0.1a](https://github.com/orkhanshirin/biocli/releases/tag/v1.0.1a) - 2022-09-21 15:53:38
 
 *No description*
