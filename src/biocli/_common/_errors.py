@@ -6,7 +6,7 @@ Common errors defined here:
 """
 
 
-class WrongFormatError(BaseException):
+class WrongFormatError(Exception):
     """Raised when the input file is not in the correct format"""
 
     def __init__(self, *args, **kwargs):
@@ -23,7 +23,7 @@ class WrongFormatError(BaseException):
             super().__init__(default_message, **kwargs)
 
 
-class EmptyFileError(BaseException):
+class EmptyFileError(Exception):
     """Raised when the input file is empty"""
 
     def __init__(self, *args, **kwargs):
@@ -38,7 +38,7 @@ class EmptyFileError(BaseException):
             super().__init__(default_message, **kwargs)
 
 
-class WrongNucleotideError(BaseException):
+class WrongNucleotideError(Exception):
     """Raised when the input file contains wrong nucleotides"""
 
     def __init__(self, *args, **kwargs):
