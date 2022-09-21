@@ -17,7 +17,7 @@ search_path = [cwd]
 sys.path.extend(search_path)
 
 _map = {
-    "__version__": "1.0.1b",
+    "__version__": "1.0.1b1",
     "__doc__": """
 CLI tool for Computational Biology""",
 }
