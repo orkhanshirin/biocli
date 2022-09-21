@@ -6,11 +6,10 @@ Translate feature to translate the given DNA sequence to RNA and vice versa.
 """
 
 
-from ._errors import WrongNucleotideError
-from ._helper import save
-from ._sequence import Sequence
+from biocli._common._errors import WrongNucleotideError
+from biocli._common._helper import save
+from biocli._common._sequence import Sequence
 
-__version__ = " 1.0"
 __all__ = ["dna_to_rna", "rna_to_dna"]
 
 
@@ -28,7 +27,7 @@ def dna_to_rna(text_file: str, to_file: bool = False) -> str:
     seq = Sequence(text_file)
 
     # check if the sequence is DNA
-    if seq._is_rna():
+    if seq.is_rna():
         raise WrongNucleotideError
 
     rna_text = "".join(["U" if x == "T" else x for x in seq])
@@ -55,7 +54,7 @@ def rna_to_dna(text_file: str, to_file: bool = False) -> str:
     seq = Sequence(text_file)
 
     # check if the sequence is RNA
-    if seq._is_dna():
+    if seq.is_dna():
         raise WrongNucleotideError
 
     dna_text = "".join(["T" if x == "U" else x for x in seq])

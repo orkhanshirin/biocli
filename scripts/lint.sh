@@ -3,6 +3,6 @@
 set -e
 set -x
 
-flake8
-black biocli --check --diff
-isort biocli --check --diff
+flake8 src
+black src  --check --diff
+isort src --check --diff

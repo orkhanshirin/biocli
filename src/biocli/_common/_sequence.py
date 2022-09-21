@@ -31,36 +31,39 @@ class Sequence:
 
     def __init__(self, text_file: str):
         self.__file = text_file
-        self.__seq = _load_sequence(self.__file)
-        if self._is_empty():
+        self.seq = _load_sequence(self.__file)
+        if self.is_empty():
             raise EmptyFileError
 
     def __repr__(self):
-        return self.__seq
+        return self.seq
 
     def __eq__(self, other):
-        return self.__seq == other.__seq
+        return self.seq == other.seq
 
     def __hash__(self):
-        return hash(self.__seq)
+        return hash(self.seq)
 
     def __len__(self):
-        return len(self.__seq)
+        return len(self.seq)
 
     def __iter__(self):
-        return iter(self.__seq)
+        return iter(self.seq)
 
     def __getitem__(self, slice_: Union[int, slice]):
-        return self.__seq[slice_]
+        return self.seq[slice_]
 
     def __str__(self) -> str:
-        return self.__seq
+        return self.seq
 
-    def _is_dna(self) -> bool:
-        return "U" not in self.__seq
+    def is_dna(self) -> bool:
+        """checks if the sequence is DNA"""
+        return "U" not in self.seq
 
-    def _is_rna(self) -> bool:
-        return "T" not in self.__seq
+    def is_rna(self) -> bool:
+        """checks if the sequence is RNA"""
+        return "T" not in self.seq
 
-    def _is_empty(self) -> bool:
-        return len(self.__seq) == 0
+    def is_empty(self) -> bool:
+        """checks if the sequence is empty"""
+        return len(self.seq) == 0

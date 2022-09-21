@@ -9,9 +9,8 @@ Count feature to count the nucleotides and patterns in the given DNA or RNA sequ
 from collections import Counter
 from typing import Dict
 
-from ._sequence import Sequence
+from biocli._common._sequence import Sequence
 
-__version__ = " 1.0"
 __all__ = ["nucleotide", "pattern", "frequency"]
 
 

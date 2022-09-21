@@ -6,9 +6,8 @@ Pattern feature for finding given pattern in the given DNA or RNA sequence.
 """
 
 
-from ._sequence import Sequence
+from biocli._common._sequence import Sequence
 
-__version__ = " 1.0"
 __all__ = ["match"]
 
 
